@@ -42,7 +42,17 @@ def display_books_for_author():
 
 def update_author():
     name = input("Enter the name of the author you want to update: ")
-    author = author.update()
+    author = Author.find_by_name(name)
+    if author:
+        new_name = input("Enter the new name for the author: ")
+        new_birth_year = int(input("Enter the new birth year for the author: "))
+
+        author.name = new_name
+        author.birth_year = new_birth_year
+      #  author.save()
+        print("Author updated successfully")
+    else:
+        print("Author not found")
 
 def update_book():
     name = input("Enter the name of the book you want to update: ")

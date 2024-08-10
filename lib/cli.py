@@ -57,7 +57,7 @@ def author_display():
     print("___________________________________")
     print("X. Delete author")
     print("___________________________________")
-    print("U. Update book details")
+    print("U. Update author details")
     print("___________________________________")
     print("D. Display books for an author")
     print("___________________________________")
@@ -81,7 +81,7 @@ def author_display():
         create_new_author()
     elif choice == "U":
         update_author()
-    elif choice == "3":
+    elif choice == "X":
         delete_author()
     elif choice == "D":
         name = input("Enter the name of the author: ")
