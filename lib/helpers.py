@@ -56,7 +56,19 @@ def update_author():
 
 def update_book():
     name = input("Enter the name of the book you want to update: ")
-    book = book.update()
+    book = Book.find_by_name(name)
+    if book:
+        new_name = input("Enter the new name of the book: ")
+        new_genre = input("Enter the new genre of the book: ")
+        new_author_name = input("Enter the new author of the book: ")
+
+        book.name = new_name
+        book.genre = new_genre
+        book.author_name = new_author_name
+        book.update()
+        print("Book updated successfully")
+    else:
+        print("Book not found")
 
 def exit_program():
     print("Goodbye!")
