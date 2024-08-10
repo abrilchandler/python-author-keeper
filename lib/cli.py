@@ -7,8 +7,7 @@ from helpers import (
     create_new_book,
     delete_book,
     display_books_for_author,
-    display_author_for_book,
-    book_display
+    display_author_for_book
 )
 from models.author import Author
 from models.book import Book
@@ -26,11 +25,11 @@ def main():
             create_new_author()
         elif choice == "3":
             delete_author()
+        # elif choice == "C":
+        #     create_new_book()
+        # elif choice == "X":
+        #     delete_book()
         elif choice == "4":
-            create_new_book()
-        elif choice == "5":
-            delete_book()
-        elif choice == "6":
             book_display()
         else:
             print("Invalid choice")
@@ -42,9 +41,9 @@ def menu():
     print("1. See all authors")
     print("2. Create New Author")
     print("3. Delete Author")
-    print("4. Create New Book")
-    print("5. Delete Book")
-    print("6. See all books")
+   # print("4. Create New Book")
+   # print("5. Delete Book")
+    print("4. See all books")
 
     
 
@@ -84,6 +83,10 @@ def book_display():
     for i, book in enumerate(books, start=1):
         print(f"{i}. {book.name}, {book.genre}")
     print("___________________________________")
+    print("C. Create a new book")
+    print("___________________________________")
+    print("X. Delete a book")
+    print("___________________________________")
     print("D. Display the author of a book")
     print("___________________________________")
     print("B. Back to the main menu")
@@ -92,6 +95,10 @@ def book_display():
 
     if choice == "B":
         main()
+    elif choice == "C":
+        create_new_book()
+    elif choice == "X":
+        delete_book()
     elif choice == "D":
         name = input("Enter the name of the book: ")
         book = Book.find_by_name(name)
