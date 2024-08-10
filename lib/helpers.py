@@ -21,6 +21,22 @@ def delete_author():
     else:
         print("Author not found")
 
+def create_new_book():
+    name = input("Enter the book's name: ")
+    genre = input("Enter the book's genre: ")
+    author_name = input("Enter the author's name: ")
+    book = Book.create(name, genre, author_name)
+    print("Book created successfully")
+
+def delete_book():
+    name = input("Enter the name of the book you want to delete: ")
+    book = Book.find_by_name(name)
+    if book:
+        book.delete()
+        print("Book deleted successfully")
+    else:
+        print("Book not found")
+
 def exit_program():
     print("Goodbye!")
     exit()

@@ -6,10 +6,10 @@ class Book:
 
     all = {}
 
-    def __init__(self, name, genre, author_id, id = None):
+    def __init__(self, name, genre, author_name, id = None):
         self.name = name
         self.genre = genre
-        self.author_id = author_id
+        self.author_name = author_name
         self.id = id
 
     @property
@@ -36,14 +36,14 @@ class Book:
         
     @property
     def author_id(self):
-        return self._author_id
+        return self._author_name
     
     @author_id.setter
-    def author_id(self, author_id):
-        if isinstance is int and Author.find_by_id(author_id):
-            self._author_id = author_id
+    def author_id(self, author_name):
+        if isinstance is str and Author.find_by_name(author_name):
+            self._author_name = author_name
         else:
-            raise ValueError("author_id must reference a department in the database")
+            raise ValueError("author_name must reference a department in the database")
         
 
     @classmethod
@@ -54,7 +54,7 @@ class Book:
             id INTEGER PRIMARY KEY,
             name TEXT,
             genre TEXT,
-            author_id INTEGER,
+            author_name INTEGER,
         """
         CURSOR.execute(sql)
         CONN.commit()
@@ -73,11 +73,11 @@ class Book:
         Update object id attribute using the primary key value of new row.
         Save the object in local dictionary using table row's PK as dictionary key"""
         sql = """
-                INSERT INTO books (name, genre, author_id)
+                INSERT INTO books (name, genre, author_name)
                 VALUES (?, ?, ?)
         """
 
-        CURSOR.execute(sql, (self.name, self.genre, self.author_id))
+        CURSOR.execute(sql, (self.name, self.genre, self.author_name))
         CONN.commit()
 
         self.id = CURSOR.lastrowid
@@ -87,11 +87,11 @@ class Book:
         """Update the table row corresponding to the current Book instance."""
         sql = """
             UPDATE books
-            SET name = ?, genre = ?, author_id = ?
+            SET name = ?, genre = ?, author_name = ?
             WHERE id = ?
         """
         CURSOR.execute(sql, (self.name, self.genre,
-                             self.author_id, self.id))
+                             self.author_name, self.id))
         CONN.commit()
 
     def delete(self):
@@ -113,9 +113,9 @@ class Book:
         self.id = None
 
     @classmethod
-    def create(cls, name, genre, author_id):
+    def create(cls, name, genre, author_name):
         """ Initialize a new Book instance and save the object to the database """
-        book = cls(name, genre, author_id)
+        book = cls(name, genre, author_name)
         book.save()
         return book
 
@@ -129,7 +129,7 @@ class Book:
             # ensure attributes match row values in case local instance was modified
             book.name = row[1]
             book.genre = row[2]
-            book.author_id = row[3]
+            book.author_name = row[3]
         else:
             # not in dictionary, create new instance and add to dictionary
             book = cls(row[1], row[2], row[3])
@@ -173,11 +173,11 @@ class Book:
         return cls.instance_from_db(row) if row else None
     
     @classmethod
-    def find_by_author_id(cls, author_id):
+    def find_by_author_name(cls, author_name):
         sql = """
             SELECT *
             FROM books
-            WHERE author_id = ?
+            WHERE author_name = ?
         """
-        rows = CURSOR.execute(sql, (author_id,)).fetchall()
+        rows = CURSOR.execute(sql, (author_name,)).fetchall()
         return cls.instance_from_db(rows) if rows else None 
