@@ -7,7 +7,8 @@ from helpers import (
     create_new_book,
     delete_book,
     display_books_for_author,
-    display_author_for_book
+    update_author,
+    update_book
 )
 from models.author import Author
 from models.book import Book
@@ -56,6 +57,8 @@ def author_display():
     print("___________________________________")
     print("X. Delete author")
     print("___________________________________")
+    print("U. Update book details")
+    print("___________________________________")
     print("D. Display books for an author")
     print("___________________________________")
     print("B. Back to the main menu")
@@ -76,6 +79,8 @@ def author_display():
         main()
     elif choice == "2":
         create_new_author()
+    elif choice == "U":
+        update_author()
     elif choice == "3":
         delete_author()
     elif choice == "D":
@@ -89,13 +94,13 @@ def author_display():
 def book_display():
     books = Book.get_all()
     for i, book in enumerate(books, start=1):
-        print(f"{i}. {book.name}, {book.genre}")
+        print(f"{i}. {book.name}, {book.genre}, {book.author_name}")
     print("___________________________________")
     print("C. Create a new book")
     print("___________________________________")
     print("X. Delete a book")
     print("___________________________________")
-    print("D. Display the author of a book")
+    print("U. Update book details")
     print("___________________________________")
     print("B. Back to the main menu")
     print("___________________________________")
@@ -107,11 +112,11 @@ def book_display():
         create_new_book()
     elif choice == "X":
         delete_book()
-    elif choice == "D":
-        name = input("Enter the name of the book: ")
-        book = Book.find_by_name(name)
-        if book:
-            display_author_for_book()
+    elif choice == "U":
+        update_book()
+    else:
+        print("Not Valid")
+        
 
 
 

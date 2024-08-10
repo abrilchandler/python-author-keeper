@@ -83,6 +83,7 @@ class Book:
         self.id = CURSOR.lastrowid
         type(self).all[self.id] = self
 
+    
     def update(self):
         """Update the table row corresponding to the current Book instance."""
         sql = """
