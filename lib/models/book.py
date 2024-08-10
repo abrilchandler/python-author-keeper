@@ -137,6 +137,7 @@ class Book:
             cls.all[book.id] = book
         return book
     
+    @classmethod
     def get_all(cls):
         """Return a list containing one Book object per table row"""
         sql = """

@@ -37,6 +37,12 @@ def delete_book():
     else:
         print("Book not found")
 
+def display_books_for_author():
+    pass
+
+def display_author_for_book():
+    pass
+
 def exit_program():
     print("Goodbye!")
     exit()

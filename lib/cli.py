@@ -5,7 +5,9 @@ from helpers import (
     create_new_author,
     delete_author,
     create_new_book,
-    delete_book
+    delete_book,
+    display_books_for_author,
+    display_author_for_book
 )
 from models.author import Author
 from models.book import Book
@@ -50,7 +52,7 @@ def author_display():
     for i, author in enumerate(authors, start=1):
         print(f"{i}. {author.name}")
     print("___________________________________")
-    print("Please type the # of the author to display their written works")
+    print("D. Display books for an author")
     print("___________________________________")
     print("B. Back to the main menu")
     print("___________________________________")
@@ -68,6 +70,11 @@ def author_display():
     #         print("No books found for the selected author.")
     if choice == "B":
         menu()
+    elif choice == "D":
+        name = input("Enter the name of the author: ")
+        author = Author.find_by_name(name)
+        if author:
+
     # else:
     #     print("Invalid choice. Please try again")
 
@@ -76,7 +83,7 @@ def book_display():
     for i, book in enumerate(books, start=1):
         print(f"{i}. {book.name}")
     print("___________________________________")
-    print("Please type the # of the author to display their written works")
+    print("D. Display the author of a book")
     print("___________________________________")
     print("B. Back to the main menu")
     print("___________________________________")
@@ -84,7 +91,11 @@ def book_display():
 
     if choice == "B":
         menu()
-
+    elif choice == "D":
+        name = input("Enter the name of the book: ")
+        book = Book.find_by_name(name)
+        if book:
+            display_author_for_book()
 
 
 if __name__ == "__main__":
