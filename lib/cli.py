@@ -5,8 +5,7 @@ from helpers import (
     create_new_author,
     delete_author,
     create_new_book,
-    delete_book,
-    book_display
+    delete_book
 )
 from models.author import Author
 from models.book import Book
