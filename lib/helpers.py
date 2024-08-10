@@ -37,19 +37,18 @@ def delete_book():
     else:
         print("Book not found")
 
-def display_books_for_author():
-    author_name = input("Enter the name of the author: ")
-    author = Author.find_by_name(author)
+
+def search_author():
+    name = input("Enter the name of the author: ")
+    author = Author.find_by_name(name)
     if author:
-        books = Book.find_by_author_name(author)
-        if books:
-            print(f"Books written by {author_name}: ")
-            for book in books:
-                print(book.name)
-        else:
-            print(f"No books found for: {author_name}")
-    else:
-        print(f"Author not found: {author}")
+        print(f"{author.name} was born in {author.birth_year}")
+
+def search_book():
+    name = input("Enter the name of the book: ")
+    book = Book.find_by_name(name)
+    if book:
+        print(f"{book.name} was written by {book.author_name} and is a {book.genre} book.")
 
 
 def update_author():
