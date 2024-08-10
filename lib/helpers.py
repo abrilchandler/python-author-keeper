@@ -49,7 +49,7 @@ def update_author():
 
         author.name = new_name
         author.birth_year = new_birth_year
-      #  author.save()
+        author.update()
         print("Author updated successfully")
     else:
         print("Author not found")
