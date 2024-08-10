@@ -21,15 +21,15 @@ def main():
             exit_program()
         elif choice == "1":
             author_display()
-        elif choice == "2":
-            create_new_author()
-        elif choice == "3":
-            delete_author()
+        # elif choice == "2":
+        #     create_new_author()
+        # elif choice == "3":
+        #     delete_author()
         # elif choice == "C":
         #     create_new_book()
         # elif choice == "X":
         #     delete_book()
-        elif choice == "4":
+        elif choice == "2":
             book_display()
         else:
             print("Invalid choice")
@@ -39,11 +39,11 @@ def menu():
     print("Please select an option:")
     print("0. Exit the program")
     print("1. See all authors")
-    print("2. Create New Author")
-    print("3. Delete Author")
+    # print("2. Create new author")
+    # print("3. Delete author")
    # print("4. Create New Book")
    # print("5. Delete Book")
-    print("4. See all books")
+    print("2. See all books")
 
     
 
@@ -51,6 +51,10 @@ def author_display():
     authors = Author.get_all()
     for i, author in enumerate(authors, start=1):
         print(f"{i}. {author.name}, {author.birth_year}")
+    print("___________________________________")
+    print("C. Create a new author")
+    print("___________________________________")
+    print("X. Delete author")
     print("___________________________________")
     print("D. Display books for an author")
     print("___________________________________")
@@ -70,6 +74,10 @@ def author_display():
     #         print("No books found for the selected author.")
     if choice == "B":
         main()
+    elif choice == "2":
+        create_new_author()
+    elif choice == "3":
+        delete_author()
     elif choice == "D":
         name = input("Enter the name of the author: ")
         author = Author.find_by_name(name)
