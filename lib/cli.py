@@ -9,7 +9,8 @@ from helpers import (
     search_author,
     search_book,
     update_author,
-    update_book
+    update_book,
+    display_books_for_author
 )
 from models.author import Author
 from models.book import Book
@@ -46,6 +47,8 @@ def author_display():
     print("___________________________________")
     print("S. Search for a author by name")
     print("___________________________________")
+    print("D. Display books by author")
+    print("___________________________________")
     print("X. Delete author")
     print("___________________________________")
     print("U. Update author details")
@@ -53,20 +56,11 @@ def author_display():
     print("B. Back to the main menu")
     print("___________________________________")
     choice = input("Enter your choice: ")
-    # number_picked = int(input("Enter the #: "))
-    # if 1 <= number_picked <= len(authors):
-    #     selected_author = author[number_picked - 1]
-    #     print(f"You selected: {selected_author.name}")
-    #     books = Book.find_by_author_id(selected_author.id)
-    # if books:
-    #     print(f"Books written by {selected_author.name}:")
-    #     for book in books:
-    #         print(book.name)
-    #     else:
-    #         print("No books found for the selected author.")
+   
+
     if choice == "B":
         main()
-    elif choice == "2":
+    elif choice == "C":
         create_new_author()
     elif choice == "U":
         update_author()
@@ -74,9 +68,12 @@ def author_display():
         delete_author()
     elif choice == "S":
         search_author()
+    elif choice == "D":
+        display_books_for_author()
     else:
         print("Not Valid")
    
+
 def book_display():
     books = Book.get_all()
     for i, book in enumerate(books, start=1):
@@ -93,6 +90,7 @@ def book_display():
     print("B. Back to the main menu")
     print("___________________________________")
     choice = input("Enter your choice: ")
+
 
     if choice == "B":
         main()

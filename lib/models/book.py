@@ -180,12 +180,12 @@ class Book:
         row = CURSOR.execute(sql, (name,)).fetchone()
         return cls.instance_from_db(row) if row else None
     
-    @classmethod
-    def find_by_author_name(cls, author_name):
-        sql = """
-            SELECT *
-            FROM books
-            WHERE author_name = ?
-        """
-        rows = CURSOR.execute(sql, (author_name,)).fetchall()
-        return cls.instance_from_db(rows) if rows else None 
+    # @classmethod
+    # def find_by_author_name(cls, author_name):
+    #     sql = """
+    #         SELECT *
+    #         FROM books
+    #         WHERE author_name = ?
+    #     """
+    #     rows = CURSOR.execute(sql, (author_name,)).fetchall()
+    #     return cls.instance_from_db(rows) if rows else None 
