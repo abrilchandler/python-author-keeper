@@ -6,6 +6,10 @@ class Book:
 
     all = {}
 
+# automatically called when you create a new instance (object) of a class.
+#_init__ method is to initialize the attributesvariables) of the class, 
+# it means that this method is responsible for setting the 
+# initial values of the object's attributes.
     def __init__(self, name, genre, author_name, id = None):
         self.name = name
         self.genre = genre
@@ -23,10 +27,12 @@ class Book:
         else:
             raise ValueError("Name must be a string")
 
+    #responsible for getting the value of the attribute
     @property
     def genre(self):
         return self._genre
     
+    #sets value of the given attribute, can include validation logic
     @genre.setter
     def genre(self, genre):
         if isinstance(genre, str) and len(genre):

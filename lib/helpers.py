@@ -3,7 +3,17 @@ from models.author import Author
 from models.book import Book
 
 
-
+def display_books_for_author():
+    choice = input("input the number of the author you want to see the books of: ")
+    author = Author.get_all()
+    if choice - 1 < len(author) and author[choice - 1]:
+        author = choice [choice - 1]
+        books = author.books_by_author()
+        print(f"{author.name}'s books: ")
+        for index, book in enumerate(books, start = 1):
+            print(f"{index} | {book.name}, {book.genre}")
+    else:
+        print(f"No books found for {choice}")
 
     
 def create_new_author():

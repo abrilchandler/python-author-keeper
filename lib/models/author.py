@@ -156,7 +156,7 @@ class Author:
         row = CURSOR.execute(sql, (name,)).fetchone()
         return cls.instance_from_db(row) if row else None
 
-    def books(self):
+    def books_by_author(self):
         """Return list of books associated with current author"""
         from book import Book
         sql = """
