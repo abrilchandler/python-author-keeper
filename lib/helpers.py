@@ -10,8 +10,8 @@ def display_books_for_author():
         author = authors[choice - 1]
         books = author.books_by_author()
         print(f"{author.name}'s books: ")
-        for index, book in enumerate(books, start = 1):
-            print(f"{index} | {book.name}, {book.genre}")
+        for book in enumerate(books, start = 1):
+            print(f" | {book.name}, {book.genre}")
     else:
         print(f"No books found for {choice}")
 

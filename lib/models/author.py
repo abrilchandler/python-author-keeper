@@ -158,7 +158,7 @@ class Author:
 
     def books_by_author(self):
         """Return list of books associated with current author"""
-        from book import Book
+        from .book import Book
         sql = """
             SELECT * FROM books
             WHERE author_name = ?
