@@ -41,15 +41,18 @@ def delete_book():
 def search_author():
     name = input("Enter the name of the author: ")
     author = Author.find_by_name(name)
+    book = Book.find_by_author_name()
     if author:
         print(f"{author.name} was born in {author.birth_year}")
+        print("____________________________")
+    
 
 def search_book():
     name = input("Enter the name of the book: ")
     book = Book.find_by_name(name)
     if book:
         print(f"{book.name} was written by {book.author_name} and is a {book.genre} book.")
-
+        print("____________________________")
 
 def update_author():
     name = input("Enter the name of the author you want to update: ")

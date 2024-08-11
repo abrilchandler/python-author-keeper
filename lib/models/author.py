@@ -161,7 +161,7 @@ class Author:
         from book import Book
         sql = """
             SELECT * FROM books
-            WHERE author_id = ?
+            WHERE author_name = ?
         """
         CURSOR.execute(sql, (self.id,),)
 
