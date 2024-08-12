@@ -41,7 +41,7 @@ def menu():
 def author_display():
     authors = Author.get_all()
     for i, author in enumerate(authors, start=1):
-        print(f"{i}. {author.name}, {author.birth_year}")
+        print(f"{i}. {author.name}")
     print("___________________________________")
     print("C. Create a new author")
     print("___________________________________")
@@ -77,7 +77,7 @@ def author_display():
 def book_display():
     books = Book.get_all()
     for i, book in enumerate(books, start=1):
-        print(f"{i}. {book.name}, {book.genre}, {book.author_name}")
+        print(f"{i}. {book.name}, {book.author_name}")
     print("___________________________________")
     print("C. Create a new book")
     print("___________________________________")
