@@ -46,7 +46,7 @@ class Author:
 
     @classmethod
     def drop_table(cls):
-        """ Drop the table that persists Department instances """
+        """ Drop the table that persists Atuhor instances """
         sql = """
             DROP TABLE IF EXISTS authors;
         """

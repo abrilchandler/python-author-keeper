@@ -6,14 +6,15 @@ class Book:
 
     all = {}
 
-# automatically called when you create a new instance (object) of a class.
+
 #_init__ method is to initialize the attributesvariables) of the class, 
 # it means that this method is responsible for setting the 
 # initial values of the object's attributes.
-    def __init__(self, name, genre, author_name, id = None):
+    def __init__(self, name, genre, author_name, author_id, id = None):
         self.name = name
         self.genre = genre
         self.author_name = author_name
+        self.author_id = author_id
         self.id = id
 
     @property
@@ -41,16 +42,26 @@ class Book:
             raise ValueError("Genre must be a string")
         
     @property
-    def author_id(self):
+    def author_name(self):
         return self._author_name
     
-    @author_id.setter
-    def author_id(self, author_name):
+    @author_name.setter
+    def author_name(self, author_name):
         if isinstance is str and Author.find_by_name(author_name):
             self._author_name = author_name
         else:
             raise ValueError("author_name must reference a department in the database")
         
+    @property
+    def author_id(self):
+        return self._author_id
+    
+    @author_id.setter
+    def author_id(self, author_id):
+        if type(author_id) is int and Author.find_by_id(author_id):
+            self._author_id = author_id
+        else: 
+            raise ValueError("Author id must correspond with author id in system")
 
     @classmethod
     def create_table(cls):
@@ -60,9 +71,10 @@ class Book:
             id INTEGER PRIMARY KEY,
             name TEXT,
             genre TEXT,
+            author_name TEXT,
             author_id INTEGER,
-            FOREIGN KEY (author_id) REFERENCES authors(id)
-            )
+            FOREIGN KEY (author_id) REFERENCES author(id)
+            );
         """
         CURSOR.execute(sql)
         CONN.commit()
@@ -81,11 +93,11 @@ class Book:
         Update object id attribute using the primary key value of new row.
         Save the object in local dictionary using table row's PK as dictionary key"""
         sql = """
-                INSERT INTO books (name, genre, author_name)
-                VALUES (?, ?, ?)
+                INSERT INTO books (name, genre, author_name, author_id)
+                VALUES (?, ?, ?, ?)
         """
 
-        CURSOR.execute(sql, (self.name, self.genre, self.author_name))
+        CURSOR.execute(sql, (self.name, self.genre, self.author_name, self.author_id))
         CONN.commit()
 
         self.id = CURSOR.lastrowid
@@ -96,11 +108,11 @@ class Book:
         """Update the table row corresponding to the current Book instance."""
         sql = """
             UPDATE books
-            SET name = ?, genre = ?, author_name = ?
+            SET name = ?, genre = ?, author_name = ?, author_id = ?
             WHERE id = ?
         """
         CURSOR.execute(sql, (self.name, self.genre,
-                             self.author_name, self.id))
+                             self.author_name, self.author_id, self.id))
         CONN.commit()
 
     def delete(self):
@@ -122,9 +134,9 @@ class Book:
         self.id = None
 
     @classmethod
-    def create(cls, name, genre, author_name):
+    def create(cls, name, genre, author_name, author_id):
         """ Initialize a new Book instance and save the object to the database """
-        book = cls(name, genre, author_name)
+        book = cls(name, genre, author_name, author_id)
         book.save()
         return book
 
@@ -139,9 +151,10 @@ class Book:
             book.name = row[1]
             book.genre = row[2]
             book.author_name = row[3]
+            book.author_id = row[4]
         else:
             # not in dictionary, create new instance and add to dictionary
-            book = cls(row[1], row[2], row[3])
+            book = cls(row[1], row[2], row[3], row[4])
             book.id = row[0]
             cls.all[book.id] = book
         return book
@@ -182,12 +195,12 @@ class Book:
         row = CURSOR.execute(sql, (name,)).fetchone()
         return cls.instance_from_db(row) if row else None
     
-    # @classmethod
-    # def find_by_author_name(cls, author_name):
-    #     sql = """
-    #         SELECT *
-    #         FROM books
-    #         WHERE author_name = ?
-    #     """
-    #     rows = CURSOR.execute(sql, (author_name,)).fetchall()
-    #     return cls.instance_from_db(rows) if rows else None 
+    @classmethod
+    def find_by_author_name(cls, author_name):
+        sql = """
+            SELECT *
+            FROM books
+            WHERE author_name = ?
+        """
+        rows = CURSOR.execute(sql, (author_name,)).fetchall()
+        return cls.instance_from_db(rows) if rows else None 
