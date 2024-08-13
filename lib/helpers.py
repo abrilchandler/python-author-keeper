@@ -20,6 +20,7 @@ def create_new_author():
     birth_year = int(input("Enter the author's birth year: "))
     author = Author.create(name, birth_year)
     print("Author created successfully")
+    print("____________________________")
 
 def delete_author():
     choice = int(input("Enter the number of the author you want to delete: "))
@@ -31,6 +32,7 @@ def delete_author():
     #if author:
         author.delete()
         print("Author deleted successfully")
+        print("____________________________")
     else:
         print("Author not found")
 
@@ -40,13 +42,18 @@ def create_new_book():
     author_name = input("Enter the author's name: ")
     book = Book.create(name, genre, author_name)
     print("Book created successfully")
+    print("____________________________")
 
 def delete_book():
-    name = input("Enter the name of the book you want to delete: ")
-    book = Book.find_by_name(name)
-    if book:
+    #name = input("Enter the name of the book you want to delete: ")
+    #book = Book.find_by_name(name)
+    choice = int(input("Enter the number of the book you want to delete: "))
+    books = Book.get_all()
+    if choice -1 < len(books) and books[choice - 1]:
+        book = books[choice - 1]
         book.delete()
         print("Book deleted successfully")
+        print("____________________________")
     else:
         print("Book not found")
 
@@ -77,6 +84,7 @@ def update_author():
         author.birth_year = new_birth_year
         author.update()
         print("Author updated successfully")
+        print("____________________________")
     else:
         print("Author not found")
 
@@ -93,6 +101,7 @@ def update_book():
         book.author_name = new_author_name
         book.update()
         print("Book updated successfully")
+        print("____________________________")
     else:
         print("Book not found")
 
