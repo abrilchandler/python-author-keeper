@@ -10,7 +10,7 @@ def display_books_for_author():
         author = authors[choice - 1]
         books = author.books_by_author()
         for choice, book in enumerate(books, start = 1):
-            print(f"{choice}. {author.name}'s books: {book.name}, {book.genre}")
+            print(f"{choice}. Written by {author.name}: {book.name}, {book.genre}")
     else:
         print(f"No books found for {choice}")
 
@@ -40,9 +40,13 @@ def create_new_book():
     name = input("Enter the book's name: ")
     genre = input("Enter the book's genre: ")
     author_name = input("Enter the author's name: ")
-    book = Book.create(name, genre, author_name)
-    print("Book created successfully")
-    print("____________________________")
+    author = Author.find_by_name(author_name)
+    if author:
+        book = Book.create(name, genre, author_name, author.id)
+        print("Book created successfully")
+        print("____________________________")
+    else:
+        print("Author not found")
 
 def delete_book():
     #name = input("Enter the name of the book you want to delete: ")

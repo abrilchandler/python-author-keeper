@@ -47,7 +47,7 @@ class Book:
     
     @author_name.setter
     def author_name(self, author_name):
-        if isinstance is str and Author.find_by_name(author_name):
+        if isinstance(author_name, str) and Author.find_by_name(author_name):
             self._author_name = author_name
         else:
             raise ValueError("author_name must reference a department in the database")
