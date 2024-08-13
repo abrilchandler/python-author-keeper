@@ -9,8 +9,8 @@ def display_books_for_author():
     if choice - 1 < len(authors) and authors[choice - 1]:
         author = authors[choice - 1]
         books = author.books_by_author()
-        for i, book in enumerate(books, start = 1):
-            print(f"{i}. {author.name}'s books: {book.name}, {book.genre}")
+        for choice, book in enumerate(books, start = 1):
+            print(f"{choice}. {author.name}'s books: {book.name}, {book.genre}")
     else:
         print(f"No books found for {choice}")
 
@@ -22,9 +22,13 @@ def create_new_author():
     print("Author created successfully")
 
 def delete_author():
-    name = input("Enter the name of the author you want to delete: ")
-    author = Author.find_by_name(name)
-    if author:
+    choice = int(input("Enter the number of the author you want to delete: "))
+    authors = Author.get_all()
+    if choice -1 < len(authors) and authors[choice - 1]:
+        author = authors[choice - 1]
+    # name = input("Enter the name of the author you want to delete: ")
+    # author = Author.find_by_name(name)
+    #if author:
         author.delete()
         print("Author deleted successfully")
     else:
