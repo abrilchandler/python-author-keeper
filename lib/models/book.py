@@ -60,7 +60,9 @@ class Book:
             id INTEGER PRIMARY KEY,
             name TEXT,
             genre TEXT,
-            author_name INTEGER,
+            author_id INTEGER,
+            FOREIGN KEY (author_id) REFERENCES authors(id)
+            )
         """
         CURSOR.execute(sql)
         CONN.commit()

@@ -103,6 +103,12 @@ class Author:
         # Set the id to None
         self.id = None
 
+    def add_book(self, book):
+        """ Adda book associated with the current author"""
+        book.author_id = self.id
+        book.save()
+
+
     @classmethod
     def instance_from_db(cls, row):
         """Return a Author object having the attribute values from the table row."""
@@ -156,12 +162,13 @@ class Author:
         row = CURSOR.execute(sql, (name,)).fetchone()
         return cls.instance_from_db(row) if row else None
 
+#instance method because it is retrieving books associated with the current author instance
     def books_by_author(self):
         """Return list of books associated with current author"""
         from .book import Book
         sql = """
             SELECT * FROM books
-            WHERE author_name = ?
+            WHERE author_id = ?
         """
         CURSOR.execute(sql, (self.id,),)
 
