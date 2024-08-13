@@ -45,6 +45,8 @@ def menu():
     print("___________________________________")
     print("3. Search for a author by name")
     print("___________________________________")
+    print("4. Search for a book by name")
+    print("___________________________________")
 
     
 

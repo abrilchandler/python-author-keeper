@@ -72,8 +72,7 @@ class Book:
             name TEXT,
             genre TEXT,
             author_name TEXT,
-            author_id INTEGER,
-            FOREIGN KEY (author_id) REFERENCES author(id)
+            author_id INTEGER
             );
         """
         CURSOR.execute(sql)
