@@ -35,6 +35,7 @@ def main():
 
 
 def menu():
+    print("-----------------------------------")
     print("Please select an option:")
     print("___________________________________")
     print("0. Exit the program")

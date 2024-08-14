@@ -13,7 +13,6 @@ def display_books_for_author():
         print("____________________________")
         for choice, book in enumerate(books, start = 1):
             print(f"{book.name}, {book.genre}")
-            print("____________________________")
     else:
         print(f"No books found for {choice}")
 
