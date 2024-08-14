@@ -36,7 +36,9 @@ My search_author and search_book are fairly similar to the update_author and upd
 ## CLI file
 This file lays out the menus that will be shown to the user along with print messages they will see as they navigate their way through the CLI application. the book_display and author_display methods both utilize a for loop to iterate through a list they retrieve using a get_all method prior in order to enumerate (or assign numbers) to each of the items within the list.
 
-The menu starts out with options to "See all authors", "See all books", "Search for 
+The menu starts out with options to "See all authors", "See all books", and "Exit the program"
+From there, when the user selects to "See all authors", they are directed to an author specific menu that allow them to add new authors to the database, search for an author by name, display books written by that author, delete authors and update any author information that may be incorrect. Finally they can choose to return the original menu. 
+The user gets similar option when they select too "See all books", they can add, delete, search, and update objects within the attached database
 
 ## models.author & models.book files
 Within these files I initialize the values of the attributes for book objects in the class Book and author objects in the class Author. The __init__ method is repsonsible for setting the initial values. Next, I use the @property decorator to use getter methods for each attribute. Then, the @attribute.setter decorators are used to set the new values of the attribute and have some additional validation logic.

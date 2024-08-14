@@ -6,11 +6,11 @@ from helpers import (
     delete_author,
     create_new_book,
     delete_book,
-    search_author,
+   # search_author,
     search_book,
     update_author,
     update_book,
-    display_books_for_author
+    select_author_by_number
 )
 from models.author import Author
 from models.book import Book
@@ -24,8 +24,8 @@ def main():
             exit_program()
         elif choice == "1":
             author_display()
-        elif choice == "2":
-            book_display()
+        # elif choice == "2":
+        #     book_display()
         else:
             print("Invalid choice")
 
@@ -38,8 +38,8 @@ def menu():
     print("___________________________________")
     print("1. See all authors")
     print("___________________________________")
-    print("2. See all books")
-    print("___________________________________")
+    # print("2. See all books")
+    # print("___________________________________")
     
 
     
@@ -53,14 +53,15 @@ def author_display():
     print("___________________________________")
     print("C. Create a new author")
     print("___________________________________")
-    print("S. Search for author by name")
+    # print("___________________________________")
+    # print("S. Search for author by name")
+    # print("___________________________________")
+    print("S. Select author by number")
     print("___________________________________")
-    print("D. Display books by author")
-    print("___________________________________")
-    print("X. Delete author")
-    print("___________________________________")
-    print("U. Update author details")
-    print("___________________________________")
+    # print("X. Delete author")
+    # print("___________________________________")
+    # print("U. Update author details")
+    # print("___________________________________")
     print("B. Back to the main menu")
     print("___________________________________")
     choice = input("Enter your choice: ")
@@ -68,48 +69,55 @@ def author_display():
 
     if choice == "B":
         main()
-    elif choice == "S":
-        search_author()
+    # elif choice == "S":
+    #     search_author()
     elif choice == "C":
         create_new_author()
-    elif choice == "U":
-        update_author()
-    elif choice == "X":
-        delete_author()
-    elif choice == "D":
-        display_books_for_author()
+        author_display()
+    # elif choice == "U":
+    #     update_author()
+    # elif choice == "X":
+    #     delete_author(authors)
+    elif choice == "S":
+        select_author_by_number(authors)
+        author_book_menu()
     else:
         print("Not Valid")
    
-
-def book_display():
+def author_book_menu():
     books = Book.get_all()
-    for i, book in enumerate(books, start=1):
-        print(f"{i}. {book.name}, {book.author_name}")
+    for i, book in enumerate(books, start = 1):
+        print(f"{i}. {book.name}") 
+    
+# def book_display():
+#     books = Book.get_all()
+#     for i, book in enumerate(books, start=1):
+#         print(f"{i}. {book.name}, {book.author_name}")
     print("___________________________________")
-    print("C. Create a new book")
+    print("A. Add a book for this author")
     print("___________________________________")
-    print("4. Search for a book by name")
+#     print("S. Search for a book by name")
+#     print("___________________________________")
+#     print("X. Delete a book")
+#     print("___________________________________")
+#     print("U. Update book details")
     print("___________________________________")
-    print("X. Delete a book")
-    print("___________________________________")
-    print("U. Update book details")
-    print("___________________________________")
-    print("B. Back to the main menu")
+    print("B. Back to the author menu")
     print("___________________________________")
     choice = input("Enter your choice: ")
 
 
     if choice == "B":
-        main()
-    elif choice == "S":
-        search_book()
-    elif choice == "C":
+        author_display()
+    # elif choice == "S":
+    #     search_book()
+    elif choice == "A":
         create_new_book()
-    elif choice == "X":
-        delete_book()
-    elif choice == "U":
-        update_book()
+        author_book_menu()
+    # elif choice == "X":
+    #     delete_book()
+    # elif choice == "U":
+    #     update_book()
     else:
         print("Not Valid")
         
