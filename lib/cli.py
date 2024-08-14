@@ -36,7 +36,7 @@ def main():
 
 def menu():
     print("-----------------------------------")
-    print("Please select an option:")
+    print("Please select an option by number:")
     print("___________________________________")
     print("0. Exit the program")
     print("___________________________________")
@@ -52,14 +52,14 @@ def menu():
     
 
 def author_display():
+    #using the Author class method to get_all of the author instances in a list
+    #using enumerate to iterate through the list of authors and print them out with numbers
     authors = Author.get_all()
     for i, author in enumerate(authors, start=1):
         print(f"{i}. {author.name}")
     print("___________________________________")
     print("C. Create a new author")
     print("___________________________________")
-   # print("S. Search for a author by name")
-   # print("___________________________________")
     print("D. Display books by author")
     print("___________________________________")
     print("X. Delete author")
@@ -79,8 +79,6 @@ def author_display():
         update_author()
     elif choice == "X":
         delete_author()
-   # elif choice == "S":
-   #     search_author()
     elif choice == "D":
         display_books_for_author()
     else:
@@ -94,8 +92,6 @@ def book_display():
     print("___________________________________")
     print("C. Create a new book")
     print("___________________________________")
-    # print("S. Search for a book by name")
-    # print("___________________________________")
     print("X. Delete a book")
     print("___________________________________")
     print("U. Update book details")
@@ -113,8 +109,6 @@ def book_display():
         delete_book()
     elif choice == "U":
         update_book()
-    # elif choice == "S":
-    #     search_book()
     else:
         print("Not Valid")
         

@@ -7,7 +7,7 @@ class Book:
     all = {}
 
 
-#_init__ method is to initialize the attributesvariables) of the class, 
+#_init__ method is to initialize the attributes(variables) of the class, 
 # it means that this method is responsible for setting the 
 # initial values of the object's attributes.
     def __init__(self, name, genre, author_name, author_id, id = None):
