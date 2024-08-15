@@ -29,7 +29,7 @@ def create_new_author():
 def delete_author(authors):
     choice = int(input("Enter the number of the author you want to delete: "))
    # authors = Author.get_all()
-    if choice -1 < len(authors) and authors[choice - 1]:
+    if choice - 1 < len(authors) and authors[choice - 1]:
         author = authors[choice - 1]
     # name = input("Enter the name of the author you want to delete: ")
     # author = Author.find_by_name(name)
@@ -43,13 +43,10 @@ def delete_author(authors):
 def create_new_book(author):
     name = input("Enter the book's name: ")
     genre = input("Enter the book's genre: ")
-    # author_name = input("Enter the author's name: ")
-    # author = Author.find_by_name(author_name)
-    # if author:
-    book = Book.create(name, genre, author.name, author.id)
+    book = Book.create(name, genre, author.id)
     print("Book created successfully")
     print("____________________________")
-    
+
 
 def delete_book():
     #name = input("Enter the name of the book you want to delete: ")
@@ -64,25 +61,7 @@ def delete_book():
     else:
         print("Book not found")
 
-
-# def search_author():
-#     name = input("Enter the name of the author: ")
-#     author = Author.find_by_name(name)
-#     if author:
-#         print(f"{author.name} was born in {author.birth_year}")
-#         print("____________________________")
-#     else:
-#         raise ValueError("Author not found")
-    
-
-def search_book():
-    name = input("Enter the name of the book: ")
-    book = Book.find_by_name(name)
-    if book:
-        print(f"{book.name} was written by {book.author_name} and is a {book.genre} book.")
-        print("____________________________")
-    else:
-        raise ValueError("Book not found")
+# 
 
 def update_author():
     name = input("Enter the name of the author you want to update: ")
@@ -119,3 +98,25 @@ def update_book():
 def exit_program():
     print("Goodbye!")
     exit()
+
+
+
+# def search_author():
+#     name = input("Enter the name of the author: ")
+#     author = Author.find_by_name(name)
+#     if author:
+#         print(f"{author.name} was born in {author.birth_year}")
+#         print("____________________________")
+#     else:
+#         raise ValueError("Author not found")
+
+
+
+ #   def search_book():
+#     name = input("Enter the name of the book: ")
+#     book = Book.find_by_name(name)
+#     if book:
+#         print(f"{book.name} was written by {book.author_name} and is a {book.genre} book.")
+#         print("____________________________")
+#     else:
+#         raise ValueError("Book not found")

@@ -103,10 +103,10 @@ class Author:
         # Set the id to None
         self.id = None
 
-    def add_book(self, book):
-        """ Add a book associated with the current author"""
-        book.author_id = self.id
-        book.save()
+    # def add_book(self, book):
+    #     """ Add a book associated with the current author"""
+    #     book.author_id = self.id
+    #     book.save()
 
 
     @classmethod

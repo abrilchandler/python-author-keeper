@@ -7,7 +7,7 @@ from helpers import (
     create_new_book,
     delete_book,
    # search_author,
-    search_book,
+    # search_book,
     update_author,
     update_book,
     select_author_by_number
@@ -64,6 +64,7 @@ def author_display():
     # print("___________________________________")
     print("B. Back to the main menu")
     print("___________________________________")
+
     choice = input("Enter your choice: ")
    
 
@@ -84,11 +85,13 @@ def author_display():
     else:
         print("Not Valid")
    
+
+
 def author_book_menu():
+    author = Author.get_all()
     books = Book.get_all()
     for i, book in enumerate(books, start = 1):
         print(f"{i}. {book.name}") 
-    
 # def book_display():
 #     books = Book.get_all()
 #     for i, book in enumerate(books, start=1):
@@ -97,10 +100,10 @@ def author_book_menu():
     print("A. Add a book for this author")
     print("___________________________________")
 #     print("S. Search for a book by name")
-#     print("___________________________________")
-#     print("X. Delete a book")
-#     print("___________________________________")
-#     print("U. Update book details")
+    print("___________________________________")
+    print("D. Delete a book")
+    print("___________________________________")
+    print("U. Update book details")
     print("___________________________________")
     print("B. Back to the author menu")
     print("___________________________________")
@@ -112,12 +115,12 @@ def author_book_menu():
     # elif choice == "S":
     #     search_book()
     elif choice == "A":
-        create_new_book()
+        create_new_book(author)
         author_book_menu()
-    # elif choice == "X":
-    #     delete_book()
-    # elif choice == "U":
-    #     update_book()
+    elif choice == "D":
+        delete_book()
+    elif choice == "U":
+        update_book()
     else:
         print("Not Valid")
         
