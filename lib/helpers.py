@@ -43,7 +43,8 @@ def delete_author(authors):
 def create_new_book(author):
     name = input("Enter the book's name: ")
     genre = input("Enter the book's genre: ")
-    book = Book.create(name, genre, author.id)
+    book = Book.create(name, genre, author.name)
+    #book = Book.create(name, genre, author.name, author.id)
     print("Book created successfully")
     print("____________________________")
 
