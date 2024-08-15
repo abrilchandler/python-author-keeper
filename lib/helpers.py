@@ -14,6 +14,10 @@ def select_author_by_number(authors):
         for i, book in enumerate(books, start = 1):
             print(f"{i}. {book.name}, {book.genre}")
             print("____________________________")
+
+        create_book_choice = input("Do you want to add a book? (y/n): ")
+        if create_book_choice.lower() == "y":
+            create_new_book(author)
     else:
         print(f"No books found for {choice}")
 
@@ -40,14 +44,13 @@ def delete_author():
     else:
         print("Author not found")
 
-def create_new_book(author_id):
+def create_new_book(author):
     name = input("Enter the book's name: ")
     genre = input("Enter the book's genre: ")
-    book = Book.create(name, genre, author_id)
+    book = Book.create(name, genre, author.id)
     #book = Book.create(name, genre, author.name, author.id)
     print("Book created successfully")
     print("____________________________")
-    
 
 
 def delete_book():
@@ -64,21 +67,21 @@ def delete_book():
         print("Book not found")
 
 
-# def update_author():
-#     choice = int(input("Enter the number of the author you want to update: "))
-#     authors = Author.get_all()
-#     if choice - 1 < len(authors) and authors[choice - 1]:
-#         author = authors[choice - 1]
-#         new_name = input("Enter the new name for the author: ")
-#         new_birth_year = int(input("Enter the new birth year for the author: "))
+def update_author():
+    choice = int(input("Enter the number of the author you want to update: "))
+    authors = Author.get_all()
+    if choice - 1 < len(authors) and authors[choice - 1]:
+        author = authors[choice - 1]
+        new_name = input("Enter the new name for the author: ")
+        new_birth_year = int(input("Enter the new birth year for the author: "))
 
-#         author.name = new_name
-#         author.birth_year = new_birth_year
-#         author.update()
-#         print("Author updated successfully")
-#         print("____________________________")
-#     else:
-#         print("Author not found")
+        author.name = new_name
+        author.birth_year = new_birth_year
+        author.update()
+        print("Author updated successfully")
+        print("____________________________")
+    else:
+        print("Author not found")
 
 # def update_book():
 #     choice = int(input("Enter the number of the book you want to update: "))

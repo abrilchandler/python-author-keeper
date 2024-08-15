@@ -8,7 +8,7 @@ from helpers import (
     delete_book,
    # search_author,
     # search_book,
-    # update_author,
+    update_author,
     # update_book,
     select_author_by_number
 )
@@ -60,8 +60,8 @@ def author_display():
     print("___________________________________")
     print("X. Delete author")
     print("___________________________________")
-    # print("U. Update author details")
-    # print("___________________________________")
+    print("U. Update author details")
+    print("___________________________________")
     print("B. Back to the main menu")
     print("___________________________________")
 
@@ -75,14 +75,15 @@ def author_display():
     elif choice == "C":
         create_new_author()
         author_display()
-    # elif choice == "U":
-    #     update_author()
+    elif choice == "U":
+        update_author()
+        author_display()
     elif choice == "X":
         delete_author()
         author_display()
     elif choice == "S":
         select_author_by_number(authors)
-        author_book_menu()
+        author_display()
     else:
         print("Not Valid")
    
@@ -91,7 +92,7 @@ def author_display():
 def author_book_menu():
     
 
-    print("A. Add a book for this author")
+    # print("A. Add a book for this author")
     # print("___________________________________")
 #     print("S. Search for a book by name")
     # print("___________________________________")
@@ -110,9 +111,9 @@ def author_book_menu():
         author_display()
     # elif choice == "S":
     #     search_book()
-    elif choice == "A":
-        create_new_book()
-        author_book_menu()
+    # elif choice == "A":
+    #     create_new_book()
+    #     author_book_menu()
     elif choice == "D":
         delete_book()
         author_display()
