@@ -6,8 +6,6 @@ from helpers import (
     delete_author,
     create_new_book,
     delete_book,
-   # search_author,
-    # search_book,
     update_author,
     update_book,
     select_author_by_number
@@ -38,9 +36,6 @@ def menu():
     print("___________________________________")
     print("1. See all authors")
     print("___________________________________")
-    # print("2. See all books")
-    # print("___________________________________")
-    
 
     
 
@@ -53,9 +48,6 @@ def author_display():
     print("___________________________________")
     print("C. Create a new author")
     print("___________________________________")
-    # print("___________________________________")
-    # print("S. Search for author by name")
-    # print("___________________________________")
     print("S. Select author by number")
     print("___________________________________")
     print("X. Delete author")
@@ -70,8 +62,6 @@ def author_display():
 
     if choice == "B":
         main()
-    # elif choice == "S":
-    #     search_author()
     elif choice == "C":
         create_new_author()
         author_display()
@@ -87,42 +77,6 @@ def author_display():
     else:
         print("Not Valid")
    
-
-
-def author_book_menu():
-    
-
-    # print("A. Add a book for this author")
-    # print("___________________________________")
-#     print("S. Search for a book by name")
-    # print("___________________________________")
-    # print("A. Add a new book")
-    print("___________________________________")
-    # print("D. Delete a book")
-    # print("___________________________________")
-    # print("U. Update book details")
-    # print("___________________________________")
-    print("B. Back to the author menu")
-    print("___________________________________")
-    choice = input("Enter your choice: ")
-
-
-    if choice == "B":
-        author_display()
-    # elif choice == "S":
-    #     search_book()
-    # elif choice == "A":
-    #     create_new_book()
-    #     author_book_menu()
-    # elif choice == "D":
-    #     delete_book()
-    #     author_display()
-    # elif choice == "U":
-    #     update_book()
-    #     author_display()
-    else:
-        print("Not Valid")
-        
 
 
 

@@ -122,24 +122,3 @@ def exit_program():
     print("Goodbye!")
     exit()
 
-
-
-# def search_author():
-#     name = input("Enter the name of the author: ")
-#     author = Author.find_by_name(name)
-#     if author:
-#         print(f"{author.name} was born in {author.birth_year}")
-#         print("____________________________")
-#     else:
-#         raise ValueError("Author not found")
-
-
-
- #   def search_book():
-#     name = input("Enter the name of the book: ")
-#     book = Book.find_by_name(name)
-#     if book:
-#         print(f"{book.name} was written by {book.author_name} and is a {book.genre} book.")
-#         print("____________________________")
-#     else:
-#         raise ValueError("Book not found")
