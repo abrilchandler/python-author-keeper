@@ -98,8 +98,8 @@ def author_book_menu():
     # print("___________________________________")
     # print("A. Add a new book")
     print("___________________________________")
-    print("D. Delete a book")
-    print("___________________________________")
+    # print("D. Delete a book")
+    # print("___________________________________")
     # print("U. Update book details")
     # print("___________________________________")
     print("B. Back to the author menu")
@@ -114,9 +114,9 @@ def author_book_menu():
     # elif choice == "A":
     #     create_new_book()
     #     author_book_menu()
-    elif choice == "D":
-        delete_book()
-        author_display()
+    # elif choice == "D":
+    #     delete_book()
+    #     author_display()
     # elif choice == "U":
     #     update_book()
     #     author_display()
