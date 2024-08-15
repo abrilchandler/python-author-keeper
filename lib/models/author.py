@@ -75,15 +75,15 @@ class Author:
         author.save()
         return author
     
-    def update(self):
-        """Update the table row corresponding to the current Author instance."""
-        sql = """
-            UPDATE authors
-            SET name = ?, birth_year = ?
-            WHERE id = ?
-        """
-        CURSOR.execute(sql, (self.name, self.birth_year, self.id))
-        CONN.commit()
+    # def update(self):
+    #     """Update the table row corresponding to the current Author instance."""
+    #     sql = """
+    #         UPDATE authors
+    #         SET name = ?, birth_year = ?
+    #         WHERE id = ?
+    #     """
+    #     CURSOR.execute(sql, (self.name, self.birth_year, self.id))
+    #     CONN.commit()
 
     def delete(self):
         """Delete the table row corresponding to the current Author instance,

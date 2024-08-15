@@ -29,9 +29,9 @@ def create_new_author():
     print("____________________________")
     
 
-def delete_author(authors):
+def delete_author():
     choice = int(input("Enter the number of the author you want to delete: "))
-   # authors = Author.get_all()
+    authors = Author.get_all()
     if choice - 1 < len(authors) and authors[choice - 1]:
         author = authors[choice - 1]
     # name = input("Enter the name of the author you want to delete: ")
@@ -63,7 +63,7 @@ def delete_book():
     #book = Book.find_by_name(name)
     choice = int(input("Enter the number of the book you want to delete: "))
     books = Book.get_all()
-    if choice -1 < len(books) and books[choice - 1]:
+    if choice - 1 < len(books) and books[choice - 1]:
         book = books[choice - 1]
         book.delete()
         print("Book deleted successfully")
@@ -71,41 +71,38 @@ def delete_book():
     else:
         print("Book not found")
 
-# 
 
-def update_author():
-    choice = int(input("Enter the number of the author you want to update: "))
-    authors = Author.get_all()
-    if choice - 1 < len(authors) and authors[choice - 1]:
-        author = authors[choice - 1]
-    if author:
-        new_name = input("Enter the new name for the author: ")
-        new_birth_year = int(input("Enter the new birth year for the author: "))
+# def update_author():
+#     choice = int(input("Enter the number of the author you want to update: "))
+#     authors = Author.get_all()
+#     if choice - 1 < len(authors) and authors[choice - 1]:
+#         author = authors[choice - 1]
+#         new_name = input("Enter the new name for the author: ")
+#         new_birth_year = int(input("Enter the new birth year for the author: "))
 
-        author.name = new_name
-        author.birth_year = new_birth_year
-        author.update()
-        print("Author updated successfully")
-        print("____________________________")
-    else:
-        print("Author not found")
+#         author.name = new_name
+#         author.birth_year = new_birth_year
+#         author.update()
+#         print("Author updated successfully")
+#         print("____________________________")
+#     else:
+#         print("Author not found")
 
-def update_book():
-    choice = int(input("Enter the number of the book you want to update: "))
-    books = Book.get_all()
-    if choice - 1 < len(books) and books[choice - 1]:
-        book = books[choice - 1]
-    if book:
-        new_name = input("Enter the new name of the book: ")
-        new_genre = input("Enter the new genre of the book: ")
+# def update_book():
+#     choice = int(input("Enter the number of the book you want to update: "))
+#     books = Book.get_all()
+#     if choice - 1 < len(books) and books[choice - 1]:
+#         book = books[choice - 1]
+#         new_name = input("Enter the new name of the book: ")
+#         new_genre = input("Enter the new genre of the book: ")
 
-        book.name = new_name
-        book.genre = new_genre
-        book.update()
-        print("Book updated successfully")
-        print("____________________________")
-    else:
-        print("Book not found")
+#         book.name = new_name
+#         book.genre = new_genre
+#         book.update()
+#         print("Book updated successfully")
+#         print("____________________________")
+#     else:
+#         print("Book not found")
 
 def exit_program():
     print("Goodbye!")

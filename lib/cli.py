@@ -8,8 +8,8 @@ from helpers import (
     delete_book,
    # search_author,
     # search_book,
-    update_author,
-    update_book,
+    # update_author,
+    # update_book,
     select_author_by_number
 )
 from models.author import Author
@@ -58,8 +58,8 @@ def author_display():
     # print("___________________________________")
     print("S. Select author by number")
     print("___________________________________")
-    # print("X. Delete author")
-    # print("___________________________________")
+    print("X. Delete author")
+    print("___________________________________")
     # print("U. Update author details")
     # print("___________________________________")
     print("B. Back to the main menu")
@@ -77,8 +77,8 @@ def author_display():
         author_display()
     # elif choice == "U":
     #     update_author()
-    # elif choice == "X":
-    #     delete_author(authors)
+    elif choice == "X":
+        delete_author()
     elif choice == "S":
         select_author_by_number(authors)
         author_book_menu()
@@ -101,8 +101,8 @@ def author_book_menu():
     print("___________________________________")
     print("D. Delete a book")
     print("___________________________________")
-    print("U. Update book details")
-    print("___________________________________")
+    # print("U. Update book details")
+    # print("___________________________________")
     print("B. Back to the author menu")
     print("___________________________________")
     choice = input("Enter your choice: ")
@@ -118,9 +118,9 @@ def author_book_menu():
     elif choice == "D":
         delete_book()
         author_display()
-    elif choice == "U":
-        update_book()
-        author_display()
+    # elif choice == "U":
+    #     update_book()
+    #     author_display()
     else:
         print("Not Valid")
         
