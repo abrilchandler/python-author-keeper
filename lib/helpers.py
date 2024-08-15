@@ -70,8 +70,10 @@ def delete_book():
 # 
 
 def update_author():
-    name = input("Enter the name of the author you want to update: ")
-    author = Author.find_by_name(name)
+    choice = int(input("Enter the number of the author you want to update: "))
+    authors = Author.get_all()
+    if choice - 1 < len(authors) and authors[choice - 1]:
+        author = authors[choice - 1]
     if author:
         new_name = input("Enter the new name for the author: ")
         new_birth_year = int(input("Enter the new birth year for the author: "))
@@ -85,16 +87,16 @@ def update_author():
         print("Author not found")
 
 def update_book():
-    name = input("Enter the name of the book you want to update: ")
-    book = Book.find_by_name(name)
+    choice = int(input("Enter the number of the book you want to update: "))
+    books = Book.get_all()
+    if choice - 1 < len(books) and books[choice - 1]:
+        book = books[choice - 1]
     if book:
         new_name = input("Enter the new name of the book: ")
         new_genre = input("Enter the new genre of the book: ")
-        new_author_name = input("Enter the new author of the book: ")
 
         book.name = new_name
         book.genre = new_genre
-        book.author_name = new_author_name
         book.update()
         print("Book updated successfully")
         print("____________________________")
