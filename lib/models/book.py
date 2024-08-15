@@ -181,11 +181,11 @@ class Book:
         return cls.instance_from_db(row) if row else None
     
     @classmethod
-    def find_by_author_id(cls, author_name):
+    def find_by_author_id(cls, author_id):
         sql = """
             SELECT *
             FROM books
             WHERE author_id = ?
         """
-        rows = CURSOR.execute(sql, (author_name,)).fetchall()
+        rows = CURSOR.execute(sql, (author_id,)).fetchall()
         return cls.instance_from_db(rows) if rows else None 
