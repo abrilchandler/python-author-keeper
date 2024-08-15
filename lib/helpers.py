@@ -11,10 +11,9 @@ def select_author_by_number(authors):
         books = author.books_by_author()
         print(f"Books written by {author.name}: ")
         print("____________________________")
-        for book in books:
-            print(f"{book.name}, {book.genre}")
+        for i, book in enumerate(books, start = 1):
+            print(f"{i}. {book.name}, {book.genre}")
             print("____________________________")
-        
         create_book_choice = input("Do you want to add a book? (y/n): ")
         if create_book_choice.lower() == "y":
             create_new_book(author.id)
@@ -22,7 +21,6 @@ def select_author_by_number(authors):
         print(f"No books found for {choice}")
 
 
-    
 def create_new_author():
     name = input("Enter the author's name: ")
     birth_year = int(input("Enter the author's birth year: "))
@@ -52,7 +50,13 @@ def create_new_book(author_id):
     #book = Book.create(name, genre, author.name, author.id)
     print("Book created successfully")
     print("____________________________")
-
+    author = Author.find_by_id(author_id)
+    books = author.books_by_author()
+    print(f"Books written by {author.name}:")
+    print("____________________________")
+    for i, book in enumerate(books, start=1):
+        print(f"{i}. {book.name}, {book.genre}")
+    print("____________________________")
 
 def delete_book():
     #name = input("Enter the name of the book you want to delete: ")

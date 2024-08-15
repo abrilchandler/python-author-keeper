@@ -89,17 +89,15 @@ def author_display():
 
 def author_book_menu():
     # authors = Author.get_all()
-    books = Book.get_all()
-    for i, book in enumerate(books, start = 1):
-        print(f"{i}. {book.name}") 
-# def book_display():
-#     books = Book.get_all()
-#     for i, book in enumerate(books, start=1):
-#         print(f"{i}. {book.name}, {book.author_name}")
-    print("___________________________________")
+    # books = Book.get_all()
+    # for i, book in enumerate(books, start = 1):
+    #     print(f"{i}. {book.name}") 
+
     # print("A. Add a book for this author")
     # print("___________________________________")
 #     print("S. Search for a book by name")
+    # print("___________________________________")
+    # print("A. Add a new book")
     print("___________________________________")
     print("D. Delete a book")
     print("___________________________________")
@@ -119,8 +117,10 @@ def author_book_menu():
     #     author_book_menu()
     elif choice == "D":
         delete_book()
+        author_display()
     elif choice == "U":
         update_book()
+        author_display()
     else:
         print("Not Valid")
         
