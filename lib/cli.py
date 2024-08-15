@@ -9,7 +9,7 @@ from helpers import (
    # search_author,
     # search_book,
     update_author,
-    # update_book,
+    update_book,
     select_author_by_number
 )
 from models.author import Author

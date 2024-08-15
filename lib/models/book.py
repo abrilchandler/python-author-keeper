@@ -91,15 +91,15 @@ class Book:
         type(self).all[self.id] = self
 
     
-    # def update(self):
-    #     """Update the table row corresponding to the current Book instance."""
-    #     sql = """
-    #         UPDATE books
-    #         SET name = ?, genre = ?, author_id = ?
-    #         WHERE id = ?
-    #     """
-    #     CURSOR.execute(sql, (self.name, self.genre, self.author_id, self.id))
-    #     CONN.commit()
+    def update(self):
+        """Update the table row corresponding to the current Book instance."""
+        sql = """
+            UPDATE books
+            SET name = ?, genre = ?, author_id = ?
+            WHERE id = ?
+        """
+        CURSOR.execute(sql, (self.name, self.genre, self.author_id, self.id))
+        CONN.commit()
 
     def delete(self):
         """Delete the table row corresponding to the current Book instance,

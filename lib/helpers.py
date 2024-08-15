@@ -15,7 +15,7 @@ def select_author_by_number(authors):
             print(f"{i}. {book.name}, {book.genre}")
             print("____________________________")
 
-        create_book_choice = input("Do you want to add a book? (y/n) or would you like to delete a book? (d/u): ")
+        create_book_choice = input("Do you want to add a book? (y/n) or would you like to delete or update a book? (d/u): ")
         if create_book_choice.lower() == "y":
             create_new_book(author)
         elif create_book_choice.lower() == "d":
