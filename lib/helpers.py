@@ -13,6 +13,11 @@ def select_author_by_number(authors):
         print("____________________________")
         for book in books:
             print(f"{book.name}, {book.genre}")
+            print("____________________________")
+        
+        create_book_choice = input("Do you want to add a book? (y/n): ")
+        if create_book_choice.lower() == "y":
+            create_new_book(author.id)
     else:
         print(f"No books found for {choice}")
 
@@ -40,10 +45,10 @@ def delete_author(authors):
     else:
         print("Author not found")
 
-def create_new_book(author):
+def create_new_book(author_id):
     name = input("Enter the book's name: ")
     genre = input("Enter the book's genre: ")
-    book = Book.create(name, genre, author.name)
+    book = Book.create(name, genre, author_id)
     #book = Book.create(name, genre, author.name, author.id)
     print("Book created successfully")
     print("____________________________")
