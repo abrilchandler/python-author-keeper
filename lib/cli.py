@@ -22,8 +22,6 @@ def main():
             exit_program()
         elif choice == "1":
             author_display()
-        # elif choice == "2":
-        #     book_display()
         else:
             print("Invalid choice")
 

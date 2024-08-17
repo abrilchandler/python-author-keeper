@@ -39,9 +39,6 @@ def delete_author():
     authors = Author.get_all()
     if choice - 1 < len(authors) and authors[choice - 1]:
         author = authors[choice - 1]
-    # name = input("Enter the name of the author you want to delete: ")
-    # author = Author.find_by_name(name)
-    #if author:
         author.delete()
         print("Author deleted successfully")
         print("____________________________")
@@ -52,7 +49,6 @@ def create_new_book(author):
     name = input("Enter the book's name: ")
     genre = input("Enter the book's genre: ")
     book = Book.create(name, genre, author.id)
-    #book = Book.create(name, genre, author.name, author.id)
     print("Book created successfully")
     print("____________________________")
 
