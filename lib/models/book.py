@@ -1,4 +1,4 @@
-from . import CURSOR, CONN
+from .__init__ import CURSOR, CONN
 from models.author import Author
 
 
@@ -18,7 +18,7 @@ class Book:
     
     @name.setter
     def name(self, name):
-        if isinstance(name, str) and len(name):
+        if isinstance(name, str) and len(name) > 0:
             self._name = name
         else:
             raise ValueError("Name must be a string")
@@ -40,6 +40,7 @@ class Book:
     def author_id(self):
         return self._author_id
     
+    #validates that the 
     @author_id.setter
     def author_id(self, author_id):
         if type(author_id) is int and Author.find_by_id(author_id):

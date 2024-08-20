@@ -1,4 +1,4 @@
-from . import CURSOR, CONN
+from .__init__ import CURSOR, CONN
 
 class Author:
 
@@ -15,7 +15,7 @@ class Author:
     
     @name.setter
     def name(self, name):
-        if isinstance(name, str) and len(name):
+        if isinstance(name, str) and len(name) > 0:
             self._name = name
         else:
             raise ValueError("Name must be a string")
